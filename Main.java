@@ -6,7 +6,32 @@ import java.util.Scanner; // Import the Scanner class
 class Main {
     static HashMap<String, Integer> votes = new HashMap<String, Integer>();
 
-    // static Dictionary<string, int> votes = new Dictionary<string, int>();
+    static void CastVote(String candidateName) {
+        votes[candidateName]++;
+        DisplayResults();
+    }
+    static void DisplayResults()
+        {
+            foreach (KeyValuePair<string, int> vote in votes)
+            {
+                System.out.println(vote.Key + "---" + vote.Value);
+            }
+            System.out.println();
+        }
+
+    static void ResetVotes()
+        {
+
+            HashMap<String, Integer> newVotes = new HashMap<String, Integer>();
+            foreach (KeyValuePair<string, Integer> vote in votes)
+            {
+
+                newVotes.Add(vote.Key, 0);
+            }
+            votes = newVotes;
+            DisplayResults();
+
+        }
   public static void main(String[] args) {
     Scanner myObj = new Scanner(System.in);  // Create a Scanner object
             String can1 = "Trump";
@@ -45,43 +70,12 @@ class Main {
                         DisplayResults();
                         break;
                     case 6:
-                        Console.WriteLine("Goodbye");
+                        System.out.println("Goodbye");
                         return;
                     default:
-                        Console.WriteLine("Invalid choice");
+                        System.out.println("Invalid choice");
                         break;
                 }
-
-
-
-  }
-
-    static void CastVote(String candidateName) {
-        votes[candidateName]++;
-        DisplayResults();
-    }
-
-    static void DisplayResults()
-        {
-            foreach (KeyValuePair<string, int> vote in votes)
-            {
-                Console.WriteLine(vote.Key + "---" + vote.Value);
-            }
-            System.out.println();
+            }     
         }
-
-    static void ResetVotes()
-        {
-
-            HashMap<String, Integer> newVotes = new HashMap<String, Integer>();
-            foreach (KeyValuePair<string, Integer> vote in votes)
-            {
-
-                newVotes.Add(vote.Key, 0);
-            }
-            votes = newVotes;
-            DisplayResults();
-
-        }
-}
 }
